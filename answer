@@ -1,0 +1,2 @@
+preventDefault() - cancel default action on listener
+stopPropagation()- stops bubling in current elemet
