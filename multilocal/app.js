@@ -4,32 +4,43 @@ lang = 'ua';
 
 function clacLanguage() {
     var rawLang = location.hash.slice(1);
+
     if (rawLang) {
         lang = rawLang;
     }
+    else {
+        lang = "ua";
+    }
     var radio = document.querySelector('input[type="radio"][value=' + lang + "]");
-    if (radio) radio.setAttribute('checked', 'true');
-    location.hash = radio.getAttribute('value');
+    radio.setAttribute('checked', 'checked');
+
+    var langCl = ".lang-" + lang;
+    var langDiv = document.querySelector(langCl);
+    console.log(langDiv);
+    langDiv.className += ' visible';
+    location.hash = lang;
+
+
+    return lang;
 }
 
 
-//
-//defaul action
-//
-
 clacLanguage();
-var checkedRadio;
+
+var radioButtons = document.querySelectorAll('input[type="radio"]');
+for (var i = 0; i < radioButtons.length; i++) {
+    radioButtons[i].addEventListener('click', function (e) {
+        e.target.setAttribute('checked', 'checked');
+        location.hash = e.target.value;
+    });
+    console.log(i);
+}
+
+
 var $save = document.querySelector('html body button#save');
 
+//save write to hash
 $save.addEventListener('click', function () {
-
-
-    checkedRadio = document.querySelector('input[type="radio"][name="lang"][checked="true"]');
-    console.log('clicked  ' + lang);
-
-    location.hash=checkedRadio.getAttribute('value');
-    console.log("location.hash: " + location.hash);
-    //location.hash = attribute;
 
 });
 

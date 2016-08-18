@@ -3,5 +3,5 @@
 }
 
 .lang.visible {
-    display: inline;
+    display: inline-block;
 }
